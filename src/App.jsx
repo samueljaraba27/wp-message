@@ -149,7 +149,8 @@ function App() {
     let indicator = document.getElementById('indicator');
     let phone = document.getElementById('phone');
     let msg = document.getElementById('msg');
-    e.target.setAttribute('href', `https://api.whatsapp.com/send/?phone=${indicator.value}${phone.value}&text=${msg.value}`);
+    // e.target.setAttribute('href', `https://api.whatsapp.com/send/?phone=${indicator.value}${phone.value}&text=${msg.value}`);
+    window.open(`https://api.whatsapp.com/send/?phone=${indicator.value}${phone.value}&text=${msg.value}`,'_blank');
   }
 
   return (
