@@ -149,8 +149,11 @@ function App() {
     let indicator = document.getElementById('indicator');
     let phone = document.getElementById('phone');
     let msg = document.getElementById('msg');
-    // e.target.setAttribute('href', `https://api.whatsapp.com/send/?phone=${indicator.value}${phone.value}&text=${msg.value}`);
-    window.open(`https://api.whatsapp.com/send/?phone=${indicator.value}${phone.value}&text=${msg.value}`,'_blank');
+    if (phone.value == "" || phone.value.length < 10) {
+      alert("Debe ingresar el numero de telefono");
+    } else {
+      window.open(`https://api.whatsapp.com/send/?phone=${indicator.value}${phone.value}&text=${msg.value}`, '_blank');
+    }
   }
 
   return (
@@ -161,7 +164,7 @@ function App() {
           <div className='wp-card-header-title'>
             <select className='contenedor' name="" id="indicator">
               {
-                prefijos.map(({ prefijo, index }) => (<option value={prefijo.replaceAll('+', '')}>{prefijo}</option>))
+                prefijos.map(({ prefijo}) => (<option value={prefijo.replaceAll('+', '')}>{prefijo}</option>))
               }
             </select>
             <input type="text" id='phone' autoComplete='off' />
